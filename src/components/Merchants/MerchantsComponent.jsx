@@ -48,7 +48,15 @@ const MerchantsComponent = ({ merchants, loadMerchant, merchantId }) => (
     <StyledHeaderDiv>Merchants</StyledHeaderDiv>
     <StyledUl>
       {merchants.map(data => (
-        <StyledLi onClick={() => loadMerchant(data.link)} key={data.id} merchantId={merchantId} dataId={data.id}>
+        <StyledLi
+          onClick={() => {
+            loadMerchant(data.link);
+            window.scrollTo(0, 0);
+          }}
+          key={data.id}
+          merchantId={merchantId}
+          dataId={data.id}
+        >
           <span>{data.name}</span>
           <StyledArrowSpan>&gt;</StyledArrowSpan>
         </StyledLi>

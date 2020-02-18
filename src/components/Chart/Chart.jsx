@@ -21,10 +21,10 @@ const ChartComponent = ({ total, subsidy }) => {
     },
     tooltips: {
       callbacks: {
-        label: function(tooltipItem, data) {
+        label: (tooltipItem, d) => {
           const labels = ['Total', 'Subsidy'];
-          const sum = data.datasets[tooltipItem.datasetIndex].data.reduce((a, b) => a + b, 0);
-          const item = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+          const sum = d.datasets[tooltipItem.datasetIndex].data.reduce((a, b) => a + b, 0);
+          const item = d.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
           const name = labels[tooltipItem.index];
           return `${name}: ${Math.round((item / sum) * 100)}%`;
         },
