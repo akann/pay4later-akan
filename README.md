@@ -33,7 +33,7 @@ I would have added the following:
  * Add `prop-types` validation.
  * Use `ReactRouter` to create paths for merchants e.g. http://localhost:3000/merchant/A1002. This is important 
    for using direct links in documents and communications and bookmarks.
- * Refactor out business logic for calculation subsidies into separate utility function since this is core business 
+ * Refactor out business logic for calculation of subsidies into separate utility function since this is core business 
    logic. It is currently tested indirectly in [selector test](./src/redux/merchant/selector.test.js).
  * Pixel match UI design. Design commonly comes from `zeplin` where fonts and dimensions are specified. 
    Spec from image requires careful measurements of pixels to reproduce and I didn't have time.
