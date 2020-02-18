@@ -31,6 +31,7 @@ I would have added the following:
    * `layout component ` - [MerchantsComponent.test.js](./src/components/Merchant/MerchantLayoutComponent.test.js)
  * Add test coverage.
  * Add `prop-types` validation.
+ * Add `search` for merchants.
  * Use `ReactRouter` to create paths for merchants e.g. http://localhost:3000/merchant/A1002. This is important 
    for using direct links in documents and communications and bookmarks.
  * Refactor out business logic for calculation of subsidies into separate utility function since this is core business 
