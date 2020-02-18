@@ -1,0 +1,5 @@
+*.test.jsx
+*.stories.jsx
+/build
+/src/serviceWorker.js
+/src/setupTests.js
