@@ -1,4 +1,4 @@
-import { merchantsDataSelector, merchantsStatusSelector } from './selector';
+import { merchantsDataSelector, merchantsStatusSelector, currentMerchantSelector } from './selector';
 
 const mockState = {
   merchants: {
@@ -64,5 +64,51 @@ describe('merchantsSelector', () => {
       errorCode: null,
       errorMessage: null,
     });
+  });
+
+  it('should select first merchant if no merchant id in path', () => {
+    const state = {
+      ...mockState,
+      router: {
+        location: {
+          pathname: '/',
+        },
+      },
+    };
+
+    expect(currentMerchantSelector(state)).toEqual({
+      id: 'A1202',
+      link: '/merchants/A1202.json',
+      name: 'Carroll - Lang Grocery',
+    });
+  });
+
+  it('should select first merchant if valid merchant id in path', () => {
+    const state = {
+      ...mockState,
+      router: {
+        location: {
+          pathname: '/a1203',
+        },
+      },
+    };
+
+    expect(currentMerchantSelector(state)).toEqual({
+      id: 'A1203',
+      link: '/merchants/A1203.json',
+      name: 'Runolfsdottir Group Health',
+    });
+  });
+  it('should select first merchant if invalid merchant id in path', () => {
+    const state = {
+      ...mockState,
+      router: {
+        location: {
+          pathname: '/x1203',
+        },
+      },
+    };
+
+    expect(currentMerchantSelector(state)).toEqual({ id: 'x1203'});
   });
 });

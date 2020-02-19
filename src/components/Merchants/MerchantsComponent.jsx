@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -43,26 +44,30 @@ const StyledLi = styled.li`
   }
 `;
 
-const MerchantsComponent = ({ merchants, loadMerchant, merchantId }) => (
-  <StyledWrapperDiv>
-    <StyledHeaderDiv>Merchants</StyledHeaderDiv>
-    <StyledUl>
-      {merchants.map(data => (
-        <StyledLi
-          onClick={() => {
-            loadMerchant(data.link);
-            window.scrollTo(0, 0);
-          }}
-          key={data.id}
-          merchantId={merchantId}
-          dataId={data.id}
-        >
-          <span>{data.name}</span>
-          <StyledArrowSpan>&gt;</StyledArrowSpan>
-        </StyledLi>
-      ))}
-    </StyledUl>
-  </StyledWrapperDiv>
-);
+const MerchantsComponent = ({ merchants, merchantId }) => {
+  const history = useHistory();
+
+  return (
+    <StyledWrapperDiv>
+      <StyledHeaderDiv>Merchants</StyledHeaderDiv>
+      <StyledUl>
+        {merchants.map(data => (
+          <StyledLi
+            onClick={() => {
+              history.push(`${data.id}`);
+              window.scrollTo(0, 0);
+            }}
+            key={data.id}
+            merchantId={merchantId}
+            dataId={data.id}
+          >
+            <span>{data.name}</span>
+            <StyledArrowSpan>&gt;</StyledArrowSpan>
+          </StyledLi>
+        ))}
+      </StyledUl>
+    </StyledWrapperDiv>
+  );
+};
 
 export default MerchantsComponent;
